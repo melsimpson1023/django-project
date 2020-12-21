@@ -22,9 +22,16 @@ class ChatRoomConsumer(AsyncWebsocketConsumer):
           {
             'type': 'tester_message',
             # we are going to pass in a string called tester
-            'tester': 'tester',
+            'tester': 'hello world',
           }
         )
+    async def tester_message(self, event):
+        # collecting data
+        tester = event['tester']
+
+        await self.send(text_data=json.dumps({
+          'tester': tester,
+        }))
 
         await self.accept()
         # we are disconnecting from the group chat
