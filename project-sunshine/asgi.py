@@ -10,7 +10,7 @@ https://docs.djangoproject.com/en/3.0/howto/deployment/asgi/
 import os
 
 from channels.routing import ProtocolTypeRouter
-from django.core.asgi import get_asgi_application
+from django.project-sunshine.asgi import get_asgi_application
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'project-sunshine.settings')
 
