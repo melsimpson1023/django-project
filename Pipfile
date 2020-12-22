@@ -17,6 +17,10 @@ dj-database-url = "*"
 channels = "*"
 whitenoise = "*"
 channels-redis = {extras = ["cryptography"], version = "*"}
+djangorestframework-jwt = "*"
+django-allauth = "*"
+openapi-codec = "*"
+django-comments-xtd = "*"
 
 [requires]
 python_version = "3.7"
