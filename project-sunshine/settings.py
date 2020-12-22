@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 import os
 import sys
 import dj_database_url
+import re
 
 # .env config:
 from dotenv import load_dotenv, find_dotenv
@@ -25,7 +26,7 @@ if os.getenv('ENV') == 'development':
   DB_NAME = os.getenv('DB_NAME_DEV')
   DB = {
       'ENGINE': 'django.db.backends.postgresql',
-      'NAME': DB_NAME,
+      'NAME': 'project-sunshine',
       'USER': 'postgres',
       'PASSWORD': 'postgres'
   }
@@ -67,6 +68,8 @@ SECRET_KEY = os.getenv('SECRET')
 INSTALLED_APPS = [
     # Our custom apps
     'api',
+    'chat',
+    'channels',
     # DRF
     'rest_framework',
     'rest_framework.authtoken',
@@ -78,8 +81,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'corsheaders',
-    'chat',
-    'channels',
 ]
 
 MIDDLEWARE = [
@@ -176,7 +177,21 @@ USE_TZ = True
 # optional package: http://whitenoise.evans.io/en/stable/django.html
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-ASGI_APPLICATION = 'project-sunshine.routing.application'
+ASGI_APPLICATION = 'project-sunshine.asgi.application'
+CHANNEL_LAYERS = {
+  "default": {
+      'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            'hosts': ["redis://:password@127.0.0.1:6379/0"],
+            'symmetric_encryption_keys': [SECRET_KEY],
+            'channel_capacity': {
+                'http.request': 200,
+                'http.response!*': 10,
+                re.compile(r"^websocket.send\!.+"): 20,
+            },
+        },
+    },
+}
 
 # Use the custom user model as the auth user for the admin view
 AUTH_USER_MODEL = 'api.User'

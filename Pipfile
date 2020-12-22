@@ -16,6 +16,7 @@ python-dotenv = "*"
 dj-database-url = "*"
 channels = "*"
 whitenoise = "*"
+channels-redis = {extras = ["cryptography"], version = "*"}
 
 [requires]
 python_version = "3.7"
