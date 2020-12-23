@@ -34,25 +34,25 @@ class BlogCreate(generics.CreateAPIView):
         else:
             return Response(blog.errors, status=status.HTTP_400_BAD_REQUEST)
 
-#class BlogDetail(generics.RetrieveUpdateDestroyAPIView):
-#    def get(self, request, pk):
-#        """Show request"""
-#        blog = get_object_or_404(Blog, pk=pk)
-#        data = BlogSerializer(blog).data
-#        return Response(data)
-#
-#    def delete(self, request, pk):
-#        """Delete request"""
-#        blog = get_object_or_404(Blog, pk=pk)
-#        blog.delete()
-#        return Response(status=status.HTTP_204_NO_CONTENT)
-#
-#    def partial_update(self, request, pk):
-#        """Update Request"""
-#        blog = get_object_or_404(Blog, pk=pk)
-#        # Validate updates with serializer
-#        bs = BlogSerializer(blog, data=request.data['blog'])
-#        if bs.is_valid():
-#            bs.save()
-#            return Response(bs.data)
-#        return Response(bs.errors, status=status.HTTP_400_BAD_REQUEST)
+class BlogDetail(generics.RetrieveUpdateDestroyAPIView):
+    def get(self, request, pk):
+        """Show request"""
+        blog = get_object_or_404(Blog, pk=pk)
+        data = BlogSerializer(blog).data
+        return Response(data)
+
+    def delete(self, request, pk):
+        """Delete request"""
+        blog = get_object_or_404(Blog, pk=pk)
+        blog.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+    def partial_update(self, request, pk):
+        """Update Request"""
+        blog = get_object_or_404(Blog, pk=pk)
+        # Validate updates with serializer
+        bs = BlogSerializer(blog, data=request.data['blog'])
+        if bs.is_valid():
+            bs.save()
+            return Response(bs.data)
+        return Response(bs.errors, status=status.HTTP_400_BAD_REQUEST)

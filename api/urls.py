@@ -1,6 +1,6 @@
 from django.urls import path
 from .views.user_views import SignUp, SignIn, SignOut, ChangePassword
-#from .views.blog_views import Blog
+
 
 urlpatterns = [
   	# Restful routing

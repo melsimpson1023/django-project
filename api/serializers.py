@@ -1,12 +1,8 @@
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
 from .models.user import User
-from .models.blog import Blog
-#from django.conf import settings
-class BlogSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Blog
-        fields = ('id', 'blogtitle', 'description', 'date', 'author', 'blogtext')
+#from .models.blog import Blog
+from django.conf import settings
 
 class UserSerializer(serializers.ModelSerializer):
     # This model serializer will be used for User creation
