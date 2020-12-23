@@ -13,7 +13,6 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 import os
 import sys
 import dj_database_url
-import re
 
 # .env config:
 from dotenv import load_dotenv, find_dotenv
@@ -67,15 +66,12 @@ SECRET_KEY = os.getenv('SECRET')
 
 INSTALLED_APPS = [
     # Our custom apps
-    'api',
-    'django_comments_xtd',
-    'django_comments',
+   'api',
     # DRF
     'rest_framework',
-
+    'rest_framework.authtoken',
     # Django built-in
     'django.contrib.admin',
-    'django.contrib.sites',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -177,25 +173,7 @@ USE_TZ = True
 # optional package: http://whitenoise.evans.io/en/stable/django.html
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-#ASGI_APPLICATION = 'project-sunshine.routing.application'
-#CHANNEL_LAYERS = {
-  #"default": {
-  #    'BACKEND': 'channels_redis.core.RedisChannelLayer',
-  #      'CONFIG': {
-  #          "hosts": [('127.0.0.1', 8000)],
-  #          'symmetric_encryption_keys': [SECRET_KEY],
-  #          'channel_capacity': {
-  #              'http.request': 200,
-  #              'http.response!*': 10,
-  #              re.compile(r"^websocket.send\!.+"): 20,
-  #          },
-  #      },
-  #  },
-#}
-COMMENTS_APP = 'django_comments_xtd'
-COMMENTS_XTD_MAX_THREAD_LEVEL = 20
+
 
 # Use the custom user model as the auth user for the admin view
 AUTH_USER_MODEL = 'api.User'
-
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'

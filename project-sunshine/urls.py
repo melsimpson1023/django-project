@@ -20,11 +20,4 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('api.urls')),
-    #path('posts/', include('post.urls')),
-    #path('admin-panel/', include('api.admin.urls')),
-    #path('auth/', include('rest_auth.urls')),
-    #path('auth/registration/', include('rest_auth.registration.urls')),
-    #path('dashboard/', include('api.dashboard.urls')),
-    #path('comments/', include('comment.urls')),
-    #path('register/', include('api.registration.urls')),
     ]
