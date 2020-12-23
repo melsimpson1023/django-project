@@ -2,17 +2,20 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import generics, status
 from django.shortcuts import get_object_or_404
+from django.contrib.auth import get_user, authenticate, login, logout
 from django.middleware.csrf import get_token
 
 from ..models.blog import Blog
-from ..serializers import BlogSerializer
+from ..serializers import BlogSerializer, UserSerializer
 
 # Create your views here.
-class BlogCreate(generics.CreateAPIView):
-    # Override the authentication/permissions classes so this endpoint
-    # is not authenticated & we don't need any permissions to access it.
-    authentication_classes = ()
-    permission_classes = ()
+class Blog(generics.ListCreateAPIView):
+    def get(self, request):
+        """Index request"""
+        # mangos = Mango.objects.all()
+        blog = Blog.objects.filter(owner = request.user.id)
+        data = BlogSerializer(blog, many=True).data
+        return Response(data)
 
     # Serializer classes are required for endpoints that create data
     serializer_class = BlogSerializer
