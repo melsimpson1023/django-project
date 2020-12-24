@@ -1,6 +1,6 @@
 #!/bin/bash
 
-curl "http://localhost:8000/blog" \
+curl "http://localhost:8000/blog/" \
   --include \
   --request POST \
   --header "Content-Type: application/json" \
@@ -8,7 +8,7 @@ curl "http://localhost:8000/blog" \
   --data '{
     "blog": {
       "blogtitle": "'"${BLOGTITLE}"'",
-      "description": "'"${DESCRIPTION}"'",
+      "blogsubject": "'"${BLOGSUBJECT}"'",
       "date": "'"${DATE}"'",
       "author": "'"${AUTHOR}"'",
       "blogtext": "'"${BLOGTEXT}"'"
