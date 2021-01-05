@@ -11,7 +11,6 @@ curl "http://localhost:8000/blog/${ID}" \
       "description": "'"${DESCRIPTION}"'",
       "date": "'"${DATE}"'",
       "author": "'"${AUTHOR}"'",
-      "blogimage": "'"${BLOGIMAGE}"'",
       "blogtext": "'"${BLOGTEXT}"'"
     }
   }'

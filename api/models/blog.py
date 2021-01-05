@@ -12,10 +12,12 @@ class Blog(models.Model):
   author = models.CharField(max_length=100)
   blogtext = models.CharField(max_length=1000)
 
-  # 'owner' will be a foreignkey pointing to the 'user'model which we'll access with the get_user_model
+  # `owner` will be a ForeignKey pointing to the `User` model
+  # which we'll access with `get_user_model`
   owner = models.ForeignKey(
-    get_user_model(),
-    on_delete=models.CASCADE,
+      get_user_model(),
+      related_name='blogs',
+      on_delete=models.CASCADE,
   )
 
 
