@@ -8,7 +8,7 @@ curl "http://localhost:8000/blog/${ID}" \
   --data '{
     "blog": {
       "blogTitle": "'"${BLOGTITLE}"'",
-      "description": "'"${DESCRIPTION}"'",
+      "blogsubject": "'"${BLOGSUBJECT}"'",
       "date": "'"${DATE}"'",
       "author": "'"${AUTHOR}"'",
       "blogtext": "'"${BLOGTEXT}"'"
