@@ -1,6 +1,6 @@
 #!/bin/bash
 
-curl "http://localhost:8000/blogs/${ID}/" \
+curl "http://localhost:8000/blog/${ID}/" \
   --include \
   --request DELETE \
   --header "Authorization: Token ${TOKEN}"
