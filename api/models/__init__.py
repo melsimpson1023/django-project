@@ -1,2 +1,2 @@
 from .user import User
-from .blog import Blog
+from .blogs import Blog
