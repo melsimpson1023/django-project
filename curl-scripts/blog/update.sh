@@ -7,11 +7,10 @@ curl "http://localhost:8000/blog/${ID}" \
   --header "Authorization: Token ${TOKEN}" \
   --data '{
     "blog": {
-      "blogTitle": "'"${BLOGTITLE}"'",
-      "blogsubject": "'"${BLOGSUBJECT}"'",
+      "title": "'"${TITLE}"'",
+      "subject": "'"${SUBJECT}"'",
       "date": "'"${DATE}"'",
-      "author": "'"${AUTHOR}"'",
-      "blogtext": "'"${BLOGTEXT}"'"
+      "text": "'"${TEXT}"'"
     }
   }'
 

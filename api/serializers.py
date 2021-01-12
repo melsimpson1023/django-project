@@ -10,7 +10,7 @@ class BlogSerializer(serializers.ModelSerializer):
     # in order to require certain data for login
     class Meta:
         model = Blog
-        fields = ('id', 'owner', 'blogtitle', 'blogsubject', 'date', 'author', 'blogtext')
+        fields = ('id', 'owner', 'blogtitle', 'blogsubject', 'date', 'blogtext')
 
 
 class UserSerializer(serializers.ModelSerializer):

@@ -13,15 +13,14 @@ from ..serializers import BlogSerializer, UserSerializer
 # Create your views here.
 # All the views in `Blogs` will require tokens & use TokenAuthentication
 class Blog(generics.ListCreateAPIView):
-  permission_classes =(IsAuthenticated,)
+  permission_classes =()
   serializer_class = BlogSerializer
   def get(self, request):
       """Index request"""
-      # blogs = Blog.objects.all()
       # Using the django `.filter` method & passing it "named argument"
       # The name is the field (owner), the value is the currently
       # signed in user's ID
-      blogs = Blog.objects.filter(owner=request.user.id)
+      blogs = Blog.objects.all()#filter(owner=request.user.id)
       data = BlogSerializer(blogs, many=True).data
       return Response({ 'blogs': data })
 

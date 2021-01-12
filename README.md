@@ -2,8 +2,6 @@
 
 This is an app that helps promote positivity via blog, videos, and articles.
 
-## Related Links
-
 ### Live Site
 
 https://melsimpson1023.github.io/front-project-sunshine
@@ -14,7 +12,7 @@ https://django-deploy-sunshine.herokuapp.com/
 
 ## Installation
 1. Fork and clone this repo.
-2. Switch to the new directory in terminala
+2. Switch to the new directory in terminal
 3. Create and checkout to a new branch.
 4. Run `pipenv shell` to step into the python virtual environment.
 5. Run `pipenv install` to install dependencies.
@@ -41,6 +39,9 @@ Commands are run with the syntax `python3 manage.py <command>`:
 
 Lux is a site created to spread positivity. There is a blog we can all use. I hope you find the inspriation you have been looked for.
 
+## ERD
+User -|< Blog
+
 ## User Stories
 
 1. I want my user to be able to sign-up.
@@ -52,3 +53,36 @@ Lux is a site created to spread positivity. There is a blog we can all use. I ho
 7. I want my signed-in user to be able to view the videos.
 8. I want my signed-in user to be able to view the articles.
 9. I want my signed-in user to be able to logout.
+
+## Catalog of routes
+
+| Verb   | URI Pattern            | Controller#Action |
+|--------|------------------------|-------------------|
+| POST   | `/sign-up/`             | `users#signup`    |
+| POST   | `/sign-in/`             | `users#signin`    |
+| PATCH  | `/change-pw/`        | `users#changepw`  |
+| DELETE | `/sign-out/`        | `users#signout`   |
+| GET    | `/blogs/`            | `blogs#index`     |
+| GET    | `/blogs/:id`        | `blogs#show`      |
+| POST   | `/blogs/`            | `blogs#create`    |
+| PATCH  | `/blogs/:id/`        |  `blogs#update`   |
+| DELETE | `/blogs/:id/`        | `blogs#delete`    |
+
+
+
+## Planning and Problem Solving
+
+From using my past knowledge from what I have learned through the course and experience with the past projects, I used miro.com for my wireframe.
+
+Miro Link: https://miro.com/app/board/o9J_lavWWgg=/
+
+
+## Technologies Used
+
+miro
+django
+python
+postgresql
+heroku
+GIT
+GitHub
