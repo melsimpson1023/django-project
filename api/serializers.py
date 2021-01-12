@@ -1,7 +1,7 @@
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
 from .models.user import User
-from .models.blog import Blog
+from .models.blogs import Blog
 #from django.conf import settings
 
 class BlogSerializer(serializers.ModelSerializer):

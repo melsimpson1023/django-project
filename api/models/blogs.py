@@ -23,8 +23,8 @@ class Blog(models.Model):
     """Returns dictionary version of Blog models"""
     return {
         'id': self.id,
-        'blogtitle': self.title,
-        'blogsubject': self.subject,
+        'title': self.title,
+        'subject': self.subject,
         'date': self.date,
-        'blogtext': self.text
+        'text': self.text
     }
