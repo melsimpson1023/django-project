@@ -1,6 +1,6 @@
 #!/bin/bash
 
-curl "http://localhost:8000/blog/" \
+curl "http://localhost:8000/blogs/" \
   --include \
   --request POST \
   --header "Content-Type: application/json" \

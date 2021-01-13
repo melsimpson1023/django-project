@@ -1,6 +1,6 @@
 #!/bin/bash
 
-curl "http://localhost:8000/blog/${ID}" \
+curl "http://localhost:8000/blogs/${ID}" \
   --include \
   --request PATCH \
   --header "Content-Type: application/json" \
