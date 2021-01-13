@@ -12,8 +12,8 @@ from ..serializers import BlogSerializer, UserSerializer
 
 # Create your views here.
 # All the views in `Blogs` will require tokens & use TokenAuthentication
-class Blog(generics.ListCreateAPIView):
-  # permission_classes =()
+class Blogs(generics.ListCreateAPIView):
+  permission_classes =()
   serializer_class = BlogSerializer
   def get(self, request):
       """Index request"""
