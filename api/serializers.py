@@ -1,7 +1,7 @@
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
 from .models.user import User
-from .models.blogs import Blog
+from .models.blog import Blog
 #from django.conf import settings
 
 class BlogSerializer(serializers.ModelSerializer):
@@ -10,7 +10,7 @@ class BlogSerializer(serializers.ModelSerializer):
     # in order to require certain data for login
     class Meta:
         model = Blog
-        fields = ('id', 'owner', 'blogtitle', 'blogsubject', 'date', 'blogtext')
+        fields = ('id', 'owner', 'title', 'subject', 'date', 'text')
 
 
 class UserSerializer(serializers.ModelSerializer):

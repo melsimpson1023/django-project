@@ -7,12 +7,12 @@ from django.shortcuts import get_object_or_404
 from django.contrib.auth import get_user, authenticate, login, logout
 from django.middleware.csrf import get_token
 
-from ..models.blogs import Blog
+from ..models.blog import Blog
 from ..serializers import BlogSerializer, UserSerializer
 
 # Create your views here.
 # All the views in `Blogs` will require tokens & use TokenAuthentication
-class Blog(generics.ListCreateAPIView):
+class Blogs(generics.ListCreateAPIView):
   permission_classes =()
   serializer_class = BlogSerializer
   def get(self, request):
@@ -82,10 +82,10 @@ class BlogDetail(generics.RetrieveUpdateDestroyAPIView):
         request.data['blog']['owner'] = request.user.id
 
         # Validate updates with serializer
-        data = BlogSerializer(blog, data=request.data['blog'])
-        if data.is_valid():
+        bl = BlogSerializer(blog, data=request.data['blog'])
+        if bl.is_valid():
             # Save & send a 204 no content
-            data.save()
+            bl.save()
             return Response(status=status.HTTP_204_NO_CONTENT)
         # If the data is not valid, return a response with the errors
-        return Response(data.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response(bl.errors, status=status.HTTP_400_BAD_REQUEST)
