@@ -82,10 +82,10 @@ class BlogDetail(generics.RetrieveUpdateDestroyAPIView):
         request.data['blog']['owner'] = request.user.id
 
         # Validate updates with serializer
-        data = BlogSerializer(blog, data=request.data['blog'])
-        if data.is_valid():
+        bl = BlogSerializer(blog, data=request.data['blog'])
+        if bl.is_valid():
             # Save & send a 204 no content
-            data.save()
+            bl.save()
             return Response(status=status.HTTP_204_NO_CONTENT)
         # If the data is not valid, return a response with the errors
-        return Response(data.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response(bl.errors, status=status.HTTP_400_BAD_REQUEST)
